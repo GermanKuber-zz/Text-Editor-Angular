@@ -1,0 +1,8 @@
+<app-header [title]="title"></app-header>
+
+<main>
+  <app-control-panel (formatText)="formatText($event)"></app-control-panel>
+  <app-file [textFormater]="textFormater"></app-file>
+</main>
+
+<app-footer></app-footer>

@@ -1,0 +1,11 @@
+<div class="file">
+  <span
+    (click)="selectWord(index)"
+    [class.class-bold]="hasFormatter(item, 'B')"
+    [class.class-italic]="hasFormatter(item, 'I')"
+    [class.class-line]="hasFormatter(item, 'U')"
+    *ngFor="let item of text; let index = index"
+    >{{ item.word }}&nbsp;</span
+  >
+  sss {{ selectedWord | json }}ss
+</div>
