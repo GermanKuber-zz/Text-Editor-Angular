@@ -11,6 +11,8 @@ import { TextService } from "../text-service/text.service";
 import { TextFormat, WordWrapper } from "../common/TextFormat";
 import { Storageservice } from "../services/storageService";
 import { WordWrapperService } from "../services/wordsService";
+import { SynonymsService } from "../services/synonymsService";
+import { HttpClient } from "@angular/common/http";
 @Component({
   selector: "app-file",
   templateUrl: "./file.component.html",
@@ -19,6 +21,8 @@ import { WordWrapperService } from "../services/wordsService";
 })
 export class FileComponent implements OnInit {
   text: WordWrapper[];
+  synonyms: string[];
+
   selectedWord: WordWrapper;
   @Output() changeSelectWord = new EventEmitter<WordWrapper>();
 
@@ -38,7 +42,8 @@ export class FileComponent implements OnInit {
     private ref: ChangeDetectorRef,
     private textService: TextService,
     private storageservice: Storageservice,
-    private wordWrapperService: WordWrapperService
+    private wordWrapperService: WordWrapperService,
+    private synonymsService: SynonymsService
   ) {}
 
   ngOnInit() {
@@ -54,8 +59,23 @@ export class FileComponent implements OnInit {
   selectWord(index: number) {
     this.selectedWord = this.text[index];
     this.changeSelectWord.emit(this.selectedWord);
+    this.getSynonymus();
+  }
+  getSynonymus() {
+    this.synonymsService
+      .getSynonyms(this.selectedWord.word)
+      .subscribe(synonyms => {
+        this.synonyms = synonyms.map(x => x.word);
+      });
   }
   hasFormatter(word: WordWrapper, format: string) {
     return this.wordWrapperService.hasFormater(word, format);
+  }
+  selectSynonym(synonym: string) {
+    this.selectedWord.word = synonym;
+    this.storageservice.set("text", this.text);
+  }
+  handleClick($event) {
+    console.log($event);
   }
 }

@@ -4,5 +4,11 @@ export class TextFormat {
 
 export class WordWrapper {
   textFormaters: TextFormat[] = [];
-  constructor(private word: string) {}
+  constructor(public word: string) {}
+}
+
+export interface SynonymsResponse {
+  word: string;
+  score: number;
+  tags: string[];
 }

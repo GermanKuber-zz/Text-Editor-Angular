@@ -13,3 +13,13 @@
     <li *ngFor="let item of selectedWord.textFormaters">{{ item.action }}</li>
   </ul>
 </div>
+<div>
+  <ul *ngIf="synonyms != null">
+    <li *ngFor="let item of synonyms">
+      {{ item }}
+      <button (click)="selectSynonym(item)">Seleccionar</button>
+    </li>
+  </ul>
+</div>
+
+<input type="text" (click)="handleClick($event)" />

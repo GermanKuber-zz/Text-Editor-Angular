@@ -9,7 +9,8 @@ import { TextService } from "./text-service/text.service";
 import { FooterComponent } from "./footer/footer.component";
 import { Storageservice } from "./services/storageService";
 import { WordWrapperService } from "./services/wordsService";
-
+import { SynonymsService } from "./services/synonymsService";
+import { HttpClientModule } from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,8 +19,8 @@ import { WordWrapperService } from "./services/wordsService";
     HeaderComponent,
     FooterComponent
   ],
-  imports: [BrowserModule, FormsModule],
-  providers: [TextService, Storageservice, WordWrapperService],
+  imports: [BrowserModule, FormsModule, HttpClientModule],
+  providers: [TextService, Storageservice, WordWrapperService, SynonymsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
