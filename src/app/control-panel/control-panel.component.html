@@ -1,9 +1,26 @@
 <div class="format-actions">
-  <button (click)="bold()" class="format-action" type="button"><b>B</b></button>
-  <button (click)="italic()" class="format-action" type="button">
+  <button
+    (click)="bold()"
+    [class.button-selected]="hasFormater('B')"
+    class="format-action"
+    type="button"
+  >
+    <b>B</b>
+  </button>
+  <button
+    (click)="italic()"
+    [class.button-selected]="hasFormater('I')"
+    class="format-action"
+    type="button"
+  >
     <i>I</i>
   </button>
-  <button (click)="underline()" class="format-action" type="button">
+  <button
+    (click)="underline()"
+    [class.button-selected]="hasFormater('U')"
+    class="format-action"
+    type="button"
+  >
     <u>U</u>
   </button>
 </div>
