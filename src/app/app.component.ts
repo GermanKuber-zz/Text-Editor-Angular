@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { TextFormat, WordWrapper } from "./common/TextFormat";
+import { TextFormat, TextStyles } from "./common/TextFormat";
 
 @Component({
   selector: "app-root",
@@ -8,12 +8,12 @@ import { TextFormat, WordWrapper } from "./common/TextFormat";
 })
 export class AppComponent {
   title = "Simple Text Editor";
-  textFormater: TextFormat;
-  selectedWord: WordWrapper;
-  formatText(textFormater) {
-    this.textFormater = textFormater;
+  textFormatter: TextFormat;
+  selectedWord: TextStyles;
+  formatText(textFormatter) {
+    this.textFormatter = textFormatter;
   }
-  changeSelectWord(word: WordWrapper) {
+  changeSelectWord(word: TextStyles) {
     this.selectedWord = word;
   }
 }

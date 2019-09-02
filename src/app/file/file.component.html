@@ -1,25 +1,12 @@
-<div class="file">
-  <span
-    (click)="selectWord(index)"
-    [class.class-bold]="hasFormatter(item, 'B')"
-    [class.class-italic]="hasFormatter(item, 'I')"
-    [class.class-line]="hasFormatter(item, 'U')"
-    *ngFor="let item of text; let index = index"
-    >{{ item.word }}&nbsp;</span
-  >
+<div (input)="changeText($event.target.innerHTML)" [innerHTML]="text" class="contentEditable file" id="contentEditable"
+  #contentEditable id="contentEditable" contenteditable>
 </div>
-<div>
-  <ul *ngIf="selectedWord != null">
-    <li *ngFor="let item of selectedWord.textFormaters">{{ item.action }}</li>
-  </ul>
-</div>
-<div>
+
+<div class="synonyms-container">
   <ul *ngIf="synonyms != null">
     <li *ngFor="let item of synonyms">
       {{ item }}
-      <button (click)="selectSynonym(item)">Seleccionar</button>
+      <button (click)="selectSynonym(item)">Select</button>
     </li>
   </ul>
 </div>
-
-<input type="text" (click)="handleClick($event)" />

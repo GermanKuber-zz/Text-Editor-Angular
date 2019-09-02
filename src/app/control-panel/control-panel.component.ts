@@ -5,8 +5,7 @@ import {
   Output,
   Input
 } from "@angular/core";
-import { TextFormat, WordWrapper } from "../common/TextFormat";
-import { WordWrapperService } from "../services/wordsService";
+import { TextFormat, TextStyles } from "../common/TextFormat";
 @Component({
   selector: "app-control-panel",
   templateUrl: "./control-panel.component.html",
@@ -16,21 +15,19 @@ import { WordWrapperService } from "../services/wordsService";
 export class ControlPanelComponent {
   @Output() formatText = new EventEmitter<TextFormat>();
 
-  private _selectedWord: WordWrapper;
-  get selectedWord(): WordWrapper {
+  private _selectedWord: TextStyles;
+  get selectedWord(): TextStyles {
     return this._selectedWord;
   }
   @Input()
-  set selectedWord(value: WordWrapper) {
+  set selectedWord(value: TextStyles) {
     if (typeof value != "string") this._selectedWord = value;
   }
 
-  constructor(private wordWrapperService: WordWrapperService) {}
-  hasFormater(action: string): boolean {
+  hasFormatter(action: string): boolean {
     if (
       this._selectedWord == null ||
-      !this.wordWrapperService.hasFormater(this._selectedWord, action)
-    )
+      !this._selectedWord.styles.some(x => x == action))
       return false;
     return true;
   }
@@ -42,5 +39,8 @@ export class ControlPanelComponent {
   }
   underline() {
     this.formatText.emit(new TextFormat("U"));
+  }
+  tabulation() {
+    this.formatText.emit(new TextFormat("T"));
   }
 }

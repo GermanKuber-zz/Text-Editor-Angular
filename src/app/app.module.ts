@@ -7,10 +7,9 @@ import { HeaderComponent } from "./header/header.component";
 import { FormsModule } from "@angular/forms";
 import { TextService } from "./text-service/text.service";
 import { FooterComponent } from "./footer/footer.component";
-import { Storageservice } from "./services/storageService";
-import { WordWrapperService } from "./services/wordsService";
 import { SynonymsService } from "./services/synonymsService";
 import { HttpClientModule } from "@angular/common/http";
+import { StorageService } from "./services/StorageService";
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +19,8 @@ import { HttpClientModule } from "@angular/common/http";
     FooterComponent
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
-  providers: [TextService, Storageservice, WordWrapperService, SynonymsService],
+  providers: [TextService, SynonymsService,
+    StorageService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

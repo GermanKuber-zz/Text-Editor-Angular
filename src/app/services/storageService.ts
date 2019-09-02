@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 
 @Injectable()
-export class Storageservice {
-  constructor() {}
+export class StorageService {
+  constructor() { }
 
   set(key: string, data: any): void {
     try {
